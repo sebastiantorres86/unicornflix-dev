@@ -1,0 +1,40 @@
+{
+    "shared": {
+        "resourceName": "unicornflix"
+    },
+    "template": {
+        "type": [
+            "HLS"
+        ],
+        "name": "Amplify_Video_System_Ott_Hls_Ts_Avc_Aac.json"
+    },
+    "sns": {
+        "createTopic": true,
+        "snsFunction": true
+    },
+    "contentDeliveryNetwork": {
+        "enableDistribution": false
+    },
+    "parameters": {
+        "authRoleName": {
+            "Ref": "AuthRoleName"
+        },
+        "GraphQLAPIId": {
+            "Fn::GetAtt": [
+                "apiunicornflix",
+                "Outputs.GraphQLAPIIdOutput"
+            ]
+        },
+        "GraphQLEndpoint": {
+            "Fn::GetAtt": [
+                "apiunicornflix",
+                "Outputs.GraphQLAPIEndpointOutput"
+            ]
+        }
+    },
+    "permissions": {
+        "permissionSchema": [
+            "admin"
+        ]
+    }
+}
